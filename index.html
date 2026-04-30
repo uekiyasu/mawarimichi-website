@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>まわりみち | MAWARIMICHI - Music, Video, Apps & Digital Solutions</title>
+<meta name="description" content="まわりみちは、音楽制作・映像制作・アプリ開発・デジタルソリューションを提供する東京拠点のクリエイティブスタジオです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #fafaf7;
+    --accent: #2d6a4f;
+    --accent-light: #40916c;
+    --muted: #6b7280;
+    --border: #e5e5e0;
+    --radius: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', 'DM Sans', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Navigation ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(250,250,247,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 2rem;
+  }
+
+  nav .nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  nav .logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  nav .logo span {
+    font-weight: 300;
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  nav ul li a:hover { color: var(--accent); }
+
+  .lang-toggle {
+    font-size: 0.75rem;
+    color: var(--muted);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: transparent;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .lang-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 140px 2rem 80px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.9;
+  }
+
+  .divider {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .divider hr {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Sections ── */
+  section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 2rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  section h2 + .section-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── Services Grid ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 4px 20px rgba(45,106,79,0.08);
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── About ── */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.9;
+  }
+
+  .info-list {
+    list-style: none;
+  }
+
+  .info-list li {
+    border-bottom: 1px solid var(--border);
+    padding: 0.8rem 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .info-list .info-label {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--muted);
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .info-list .info-value {
+    font-size: 0.9rem;
+    word-break: break-all;
+  }
+
+  .info-list .info-value a {
+    color: var(--accent);
+  }
+
+  /* ── Contact ── */
+  .contact-box {
+    background: var(--ink);
+    color: white;
+    border-radius: var(--radius);
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .contact-box h2 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .contact-box p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-email {
+    display: inline-block;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.8rem 2rem;
+    border-radius: var(--radius);
+    transition: all 0.3s;
+    letter-spacing: 0.02em;
+  }
+
+  .contact-email:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.6);
+  }
+
+  /* ── Privacy ── */
+  .privacy-section {
+    padding-bottom: 40px;
+  }
+
+  .privacy-section p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+
+  .privacy-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  /* ── Footer ── */
+  footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero { padding: 120px 1.5rem 60px; }
+    section { padding: 40px 1.5rem; }
+    .contact-box { padding: 2rem; }
+  }
+
+  /* ── Lang toggle ── */
+  .en { display: none; }
+  body.lang-en .ja { display: none; }
+  body.lang-en .en { display: block; }
+  body.lang-en .en-inline { display: inline; }
+  body.lang-en .ja-inline { display: none; }
+  body:not(.lang-en) .en-inline { display: none; }
+  body:not(.lang-en) .ja-inline { display: inline; }
+
+  /* service cards inside grid - override display */
+  .services-grid .service-card.en { display: none; }
+  body.lang-en .services-grid .service-card.ja { display: none; }
+  body.lang-en .services-grid .service-card.en { display: block; }
+
+  .about-content .en { display: none; }
+  body.lang-en .about-content .ja { display: none; }
+  body.lang-en .about-content .en { display: block; }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">MAWARIMICHI <span class="ja-inline">まわりみち</span></div>
+    <ul>
+      <li><a href="#services" class="ja-inline">事業内容</a><a href="#services" class="en-inline">Services</a></li>
+      <li><a href="#about" class="ja-inline">会社概要</a><a href="#about" class="en-inline">About</a></li>
+      <li><a href="#contact" class="ja-inline">お問い合わせ</a><a href="#contact" class="en-inline">Contact</a></li>
+      <li><a href="#privacy" class="ja-inline">プライバシー</a><a href="#privacy" class="en-inline">Privacy</a></li>
+    </ul>
+    <button class="lang-toggle" onclick="toggleLang()">
+      <span class="ja-inline">EN</span>
+      <span class="en-inline">日本語</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="ja">
+    <h1>クリエイティブと<br>テクノロジーの<em>交差点</em></h1>
+    <p>まわりみちは、音楽制作・映像制作・アプリ開発・デジタルソリューションを手がける東京拠点のクリエイティブスタジオです。ひとつの道にこだわらず、遠回りの中にこそ新しい価値を見つけます。</p>
+  </div>
+  <div class="en">
+    <h1>Where Creativity<br>Meets <em>Technology</em></h1>
+    <p>MAWARIMICHI is a Tokyo-based creative studio specializing in music production, video creation, app development, and digital solutions. We believe the scenic route leads to the most meaningful destinations.</p>
+  </div>
+</header>
+
+<div class="divider"><hr></div>
+
+<!-- Services -->
+<section id="services">
+  <h2 class="ja">事業内容</h2>
+  <h2 class="en">Services</h2>
+  <p class="section-sub ja">What We Do</p>
+  <p class="section-sub en">What We Do</p>
+
+  <div class="services-grid">
+    <!-- JA cards -->
+    <div class="service-card ja">
+      <div class="service-icon">♪</div>
+      <h3>音楽制作・演奏</h3>
+      <p>楽曲制作、編曲、レコーディング、ライブ演奏まで。アーティストとしての表現活動から、商業音楽の制作まで幅広く対応します。</p>
+    </div>
+    <div class="service-card ja">
+      <div class="service-icon">▶</div>
+      <h3>映像制作・配信</h3>
+      <p>動画コンテンツの企画・撮影・編集・配信。ミュージックビデオ、プロモーション映像、オンライン配信コンテンツを制作します。</p>
+    </div>
+    <div class="service-card ja">
+      <div class="service-icon">📱</div>
+      <h3>アプリ・Webサービス開発</h3>
+      <p>スマートフォンアプリおよびWebサービスの企画・設計・開発。iOS / Android対応のモバイルアプリを中心に、ユーザーの課題を解決するプロダクトを提供します。</p>
+    </div>
+    <div class="service-card ja">
+      <div class="service-icon">🛒</div>
+      <h3>デジタルコマース</h3>
+      <p>インターネットを活用した物品販売・EC運営。デジタルコンテンツの販売からフィジカル商品の流通まで、オンラインビジネスを展開します。</p>
+    </div>
+
+    <!-- EN cards -->
+    <div class="service-card en">
+      <div class="service-icon">♪</div>
+      <h3>Music Production</h3>
+      <p>Composition, arrangement, recording, and live performance. From artistic expression to commercial music production, we cover the full spectrum.</p>
+    </div>
+    <div class="service-card en">
+      <div class="service-icon">▶</div>
+      <h3>Video Production</h3>
+      <p>Planning, filming, editing, and distribution of video content. Music videos, promotional content, and online streaming productions.</p>
+    </div>
+    <div class="service-card en">
+      <div class="service-icon">📱</div>
+      <h3>App & Web Development</h3>
+      <p>Planning, design, and development of smartphone apps and web services. We build mobile apps for iOS and Android that solve real user problems.</p>
+    </div>
+    <div class="service-card en">
+      <div class="service-icon">🛒</div>
+      <h3>Digital Commerce</h3>
+      <p>E-commerce operations and online retail. From digital content distribution to physical product sales, we build and run online businesses.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- About -->
+<section id="about">
+  <h2 class="ja">会社概要</h2>
+  <h2 class="en">About</h2>
+  <p class="section-sub ja">Company Overview</p>
+  <p class="section-sub en">Company Overview</p>
+
+  <div class="about-content">
+    <div class="about-text ja">
+      <p>「まわりみち」── 回り道であり、周りが道であり、周りが未知。最短距離だけが正解ではなく、どこへでも行けるし、まだ見ぬ場所にこそ面白いものがある。そんな思いを社名に込めています。</p>
+      <p>音楽、映像、アプリ開発、コマース。それぞれ別の畑に見えるかもしれませんが、私たちはひとつの苗木が枯れても他の苗が育つように、多様な事業の種をまき、風のように可能性を運ぶ存在でありたいと考えています。</p>
+      <p>押し付けず、ただ在るものとして ── 私たちのプロダクトやサービスが、誰かの中で何かのきっかけになれば。東京を拠点に、日本と海外のユーザーに向けたプロダクトとサービスを展開しています。</p>
+    </div>
+    <div class="about-text en">
+      <p>"MAWARIMICHI" means detour — but it also reads as "everywhere is a path" and "the unknown is all around." We named ourselves after the belief that the scenic route is where the most meaningful things are found.</p>
+      <p>Music, video, app development, and commerce may seem like separate fields. But like seeds carried by the wind to unexpected places, each venture grows into something new. When one falls, others thrive — and even what fades nourishes the soil for what comes next.</p>
+      <p>We don't push. We simply exist, create, and let our work speak for itself — hoping it sparks something in someone, somewhere. Based in Tokyo, building for users in Japan and around the world.</p>
+    </div>
+
+    <div>
+      <ul class="info-list">
+        <li>
+          <span class="info-label ja-inline">屋号</span><span class="info-label en-inline">Name</span>
+          <span class="info-value">まわりみち / MAWARIMICHI</span>
+        </li>
+        <li>
+          <span class="info-label ja-inline">所在地</span><span class="info-label en-inline">Location</span>
+          <span class="info-value ja-inline">東京都中央区</span><span class="info-value en-inline">Chuo-ku, Tokyo, Japan</span>
+        </li>
+        <li>
+          <span class="info-label ja-inline">代表者</span><span class="info-label en-inline">Founder</span>
+          <span class="info-value ja-inline">山岸 泰久</span><span class="info-value en-inline">Yasuhisa Yamagishi</span>
+        </li>
+        <li>
+          <span class="info-label ja-inline">事業内容</span><span class="info-label en-inline">Business</span>
+          <span class="info-value ja-inline">音楽制作・演奏、動画制作・配信、アプリ・Webサービス開発、物品販売</span>
+          <span class="info-value en-inline">Music production, video creation, app &amp; web development, e-commerce</span>
+        </li>
+        <li>
+          <span class="info-label">D-U-N-S</span>
+          <span class="info-value">698934908</span>
+        </li>
+        <li>
+          <span class="info-label ja-inline">メール</span><span class="info-label en-inline">Email</span>
+          <span class="info-value"><a href="mailto:contact@mawarimichi-inc.com">contact@mawarimichi-inc.com</a></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-box">
+    <h2 class="ja">お問い合わせ</h2>
+    <h2 class="en">Contact</h2>
+    <p class="ja">事業に関するご相談・ご質問は、お気軽にメールにてお問い合わせください。</p>
+    <p class="en">For inquiries about our services, please feel free to reach out via email.</p>
+    <a href="mailto:contact@mawarimichi-inc.com" class="contact-email">contact@mawarimichi-inc.com</a>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- Privacy Policy -->
+<section id="privacy" class="privacy-section">
+  <h2 class="ja">プライバシーポリシー</h2>
+  <h2 class="en">Privacy Policy</h2>
+  <p class="section-sub ja">Privacy Policy</p>
+  <p class="section-sub en">Privacy Policy</p>
+
+  <div class="ja">
+    <p>まわりみち（以下「当方」）は、ユーザーの個人情報の保護を重要な責務と認識し、以下のとおりプライバシーポリシーを定めます。</p>
+
+    <h3>1. 収集する情報</h3>
+    <p>当方が提供するアプリケーションおよびサービスでは、サービスの改善や広告配信の目的で、以下の情報を収集する場合があります：端末識別情報、利用状況データ、広告識別子。個人を直接特定できる情報（氏名、住所、電話番号等）は、ユーザーが自発的に提供した場合を除き、収集しません。</p>
+
+    <h3>2. 情報の利用目的</h3>
+    <p>収集した情報は、以下の目的で利用します：サービスの提供・運営・改善、広告の配信および最適化、ユーザーサポートへの対応、利用状況の分析。</p>
+
+    <h3>3. 第三者への提供</h3>
+    <p>当方は、法令に基づく場合を除き、ユーザーの個人情報を第三者に提供することはありません。ただし、広告配信のため、Google AdMob等のサードパーティサービスを利用しており、これらのサービスが独自に情報を収集する場合があります。</p>
+
+    <h3>4. 広告について</h3>
+    <p>当方のアプリケーションでは、Google AdMobによる広告を表示する場合があります。AdMobは、パーソナライズされた広告を表示するために、端末の広告識別子やCookieを使用することがあります。詳細はGoogleのプライバシーポリシーをご参照ください。</p>
+
+    <h3>5. データの保護</h3>
+    <p>当方は、収集した情報の安全管理のために、適切な技術的・組織的措置を講じます。</p>
+
+    <h3>6. お子様のプライバシー</h3>
+    <p>当方のサービスは、13歳未満のお子様を対象としていません。13歳未満のお子様から意図せず個人情報を収集していることが判明した場合、速やかに当該情報を削除します。</p>
+
+    <h3>7. ポリシーの変更</h3>
+    <p>本ポリシーは、必要に応じて改定する場合があります。重要な変更がある場合は、当Webサイトにて通知します。</p>
+
+    <h3>8. お問い合わせ</h3>
+    <p>本ポリシーに関するお問い合わせは、<a href="mailto:contact@mawarimichi-inc.com" style="color:var(--accent);">contact@mawarimichi-inc.com</a> までご連絡ください。</p>
+
+    <p style="margin-top: 2rem; font-size: 0.8rem;">最終更新日：2026年4月28日</p>
+  </div>
+
+  <div class="en">
+    <p>MAWARIMICHI ("we," "our," or "us") recognizes the importance of protecting user privacy and establishes this Privacy Policy accordingly.</p>
+
+    <h3>1. Information We Collect</h3>
+    <p>Our applications and services may collect the following information for service improvement and advertising purposes: device identifiers, usage data, and advertising identifiers. We do not collect personally identifiable information (such as name, address, or phone number) unless voluntarily provided by the user.</p>
+
+    <h3>2. Use of Information</h3>
+    <p>Collected information is used for: providing, operating, and improving our services; advertising delivery and optimization; user support; and usage analysis.</p>
+
+    <h3>3. Third-Party Disclosure</h3>
+    <p>We do not share personal information with third parties except as required by law. However, we use third-party services such as Google AdMob for advertising, which may independently collect information.</p>
+
+    <h3>4. Advertising</h3>
+    <p>Our applications may display advertisements through Google AdMob. AdMob may use device advertising identifiers and cookies to deliver personalized ads. Please refer to Google's Privacy Policy for details.</p>
+
+    <h3>5. Data Protection</h3>
+    <p>We implement appropriate technical and organizational measures to protect collected information.</p>
+
+    <h3>6. Children's Privacy</h3>
+    <p>Our services are not intended for children under 13. If we discover that we have inadvertently collected personal information from a child under 13, we will promptly delete such information.</p>
+
+    <h3>7. Policy Changes</h3>
+    <p>This policy may be revised as needed. Significant changes will be communicated through this website.</p>
+
+    <h3>8. Contact</h3>
+    <p>For inquiries about this policy, please contact us at <a href="mailto:contact@mawarimichi-inc.com" style="color:var(--accent);">contact@mawarimichi-inc.com</a>.</p>
+
+    <p style="margin-top: 2rem; font-size: 0.8rem;">Last updated: April 28, 2026</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 まわりみち / MAWARIMICHI. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleLang() {
+  document.body.classList.toggle('lang-en');
+}
+</script>
+
+</body>
+</html>
